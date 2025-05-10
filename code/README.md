@@ -22,10 +22,11 @@ The `Basic_Solutions_and_Bounded_LPP.m` script finds all basic feasible solution
 
 ### Visual Workflow
 
+<!-- Mermaid diagram syntax fixed for compatibility -->
 ```mermaid
 flowchart TD
     A[Input: A, b, c] --> B[Generate all combinations of basic variables]
-    B --> C[Check feasibility (xB >= 0)]
+    B --> C[Check feasibility: xB &gt;= 0]
     C --> D[Store feasible solutions]
     D --> E[Compute objective values]
     E --> F[Select best solution]
