@@ -15,37 +15,6 @@ This project provides a modular and extensible framework for solving mathematica
 
 ---
 
-## 📂 Repository Structure
-
-```
-optimization/
-│
-├── code/                # Main source code for optimization algorithms
-│   ├── Basic_Solutions_and_Bounded_LPP.m   # MATLAB: BFS and bounded LPP solver
-│   ├── optimizer.py                        # (Optional) Python optimizer
-│   ├── utils.py                            # (Optional) Python utilities
-│   └── __init__.py                         # (Optional) Python package marker
-│   └── README.md                           # Code folder documentation
-│
-├── data/                # Datasets and input files
-├── tests/               # Unit and integration tests
-├── results/             # Output results, logs, and figures
-├── README.md            # Project documentation (this file)
-└── LICENSE              # License information
-```
-
----
-
-## 🖼️ Visual Overview
-
-### General Workflow
-
-```mermaid
-flowchart TD
-    A[Input Data] --> B[Preprocessing (utils.py)]
-    B --> C[Optimization Algorithm (optimizer.py)]
-    C --> D[Results Output]
-```
 
 ### MATLAB Example: Basic Solutions and Bounded LPP
 
