@@ -1,17 +1,17 @@
-# Optimization Project
+# Optimization Techniques
 
-Welcome to the **Optimization** project!  
-This repository provides a modular framework for solving mathematical optimization problems using various algorithms and utilities.
+Welcome to the **Optimization Techniques** repository!  
+This project provides a modular and extensible framework for solving mathematical optimization problems using a variety of algorithms and utilities, with support for both MATLAB and Python implementations.
 
 ---
 
 ## ✨ Features
 
-- **Modular codebase** for easy extension  
-- **Multiple optimization algorithms** supported  
-- **Utilities** for data preprocessing and result analysis  
-- **Example scripts** and **test cases**  
-- **Well-documented** and easy to use  
+- **Multiple optimization algorithms**: Linear programming, basic feasible solution enumeration, and more.
+- **Cross-language support**: MATLAB and Python code for flexibility and learning.
+- **Utilities**: Data preprocessing, helper functions, and result analysis.
+- **Well-documented**: Clear code comments, usage examples, and visual explanations.
+- **Easy to extend**: Add your own algorithms or utilities.
 
 ---
 
@@ -21,15 +21,16 @@ This repository provides a modular framework for solving mathematical optimizati
 optimization/
 │
 ├── code/                # Main source code for optimization algorithms
-│   ├── __init__.py
-│   ├── optimizer.py     # Core optimization logic
-│   ├── utils.py         # Helper functions
-│   └── ...              # Additional modules
+│   ├── Basic_Solutions_and_Bounded_LPP.m   # MATLAB: BFS and bounded LPP solver
+│   ├── optimizer.py                        # (Optional) Python optimizer
+│   ├── utils.py                            # (Optional) Python utilities
+│   └── __init__.py                         # (Optional) Python package marker
+│   └── README.md                           # Code folder documentation
 │
 ├── data/                # Datasets and input files
 ├── tests/               # Unit and integration tests
 ├── results/             # Output results, logs, and figures
-├── README.md            # Project documentation
+├── README.md            # Project documentation (this file)
 └── LICENSE              # License information
 ```
 
@@ -37,88 +38,110 @@ optimization/
 
 ## 🖼️ Visual Overview
 
-### Workflow Diagram
+### General Workflow
 
 ```mermaid
 flowchart TD
-    A[Input Data] --> B[Preprocessing (utils.py)]
-    B --> C[Optimization Algorithm (optimizer.py)]
+    A[Input Data] --> B[Preprocessing (utils.py/.m)]
+    B --> C[Optimization Algorithm (optimizer.py/.m)]
     C --> D[Results Output]
 ```
 
-### Folder Structure
+### MATLAB Example: Basic Solutions and Bounded LPP
 
 ```mermaid
-graph TD
-    A[optimization/] --> B[code/]
-    A --> C[data/]
-    A --> D[tests/]
-    A --> E[results/]
-    A --> F[README.md]
-    A --> G[LICENSE]
-    B --> H[optimizer.py]
-    B --> I[utils.py]
+flowchart TD
+    A[Input: A, b, c] --> B[Generate all combinations of basic variables]
+    B --> C[Check feasibility: xB &gt;= 0]
+    C --> D[Store feasible solutions]
+    D --> E[Compute objective values]
+    E --> F[Select best solution]
 ```
 
 ---
 
 ## 🚀 Getting Started
 
-**1. Clone the Repository**
+### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/yourusername/optimization.git
 cd optimization
 ```
 
-**2. Install Dependencies**  
-Make sure you have Python 3.8+ installed. Then run:
-```bash
-pip install -r requirements.txt
-```
+### 2. Install Dependencies
 
-**3. Run an Example**
-```bash
-python code/optimizer.py --input data/sample_input.csv
-```
+- **Python:**  
+  Make sure you have Python 3.8+ installed.  
+  Install dependencies (if any) with:
+  ```bash
+  pip install -r requirements.txt
+  ```
+- **MATLAB:**  
+  No installation required for MATLAB scripts. Open `.m` files directly in MATLAB.
+
+### 3. Run an Example
+
+- **MATLAB:**  
+  Open `code/Basic_Solutions_and_Bounded_LPP.m` in MATLAB and run:
+  ```matlab
+  A = [1 2; 3 4; 5 6];
+  b = [7; 8; 9];
+  c = [1 1];
+  [BFS, z_best, x_best] = Basic_Solutions_and_Bounded_LPP(A, b, c);
+  disp(BFS);
+  disp(z_best);
+  disp(x_best);
+  ```
+- **Python:**  
+  (If `optimizer.py` is present)
+  ```bash
+  python code/optimizer.py --input data/sample_input.csv
+  ```
 
 ---
 
 ## 🧩 Code Folder Overview
 
-The `code/` directory contains all the main logic for the optimization routines.
-
-| File            | Description                                 |
-|-----------------|---------------------------------------------|
-| `optimizer.py`  | Implements core optimization algorithms     |
-| `utils.py`      | Utility functions for data processing       |
-| `__init__.py`   | Makes `code` a Python package               |
+See [`code/README.md`](code/README.md) for a detailed breakdown of the code folder, including file purposes and usage.
 
 ---
 
-## 📝 Example Usage
+## 📝 Example MATLAB Function
 
-```python
-from code.optimizer import Optimizer
+**File:** `code/Basic_Solutions_and_Bounded_LPP.m`
 
-optimizer = Optimizer(params)
-result = optimizer.optimize(data)
-print(result)
+This function finds all basic feasible solutions (BFS) for a linear system and identifies the one that maximizes the objective function.
+
+**Signature:**
+```matlab
+function [BFS, z_best, x_best] = Basic_Solutions_and_Bounded_LPP(A, b, c)
 ```
-
----
-
-## 📚 References
-
-- [Optimization Algorithms Overview](https://en.wikipedia.org/wiki/Mathematical_optimization)
-- [Project Wiki](https://github.com/yourusername/optimization/wiki)
+- **Inputs:**  
+  - `A`: Constraint matrix (m x n)  
+  - `b`: Right-hand side vector (m x 1)  
+  - `c`: Objective function coefficients (1 x n)  
+- **Outputs:**  
+  - `BFS`: All basic feasible solutions found  
+  - `z_best`: Maximum objective value  
+  - `x_best`: Corresponding variable values for `z_best`  
 
 ---
 
 ## 🛠️ Contributing
 
 Contributions are welcome!  
-Please open issues or submit pull requests.  
-For major changes, please open an issue first to discuss what you would like to change.
+- Open issues for bug reports or feature requests.
+- Submit pull requests for improvements or new algorithms.
+- For major changes, please open an issue first to discuss your ideas.
+
+---
+
+## 📚 References
+
+- [Linear Programming - Wikipedia](https://en.wikipedia.org/wiki/Linear_programming)
+- [Mathematical Optimization - Wikipedia](https://en.wikipedia.org/wiki/Mathematical_optimization)
+- [MATLAB Documentation](https://www.mathworks.com/help/matlab/)
 
 ---
 
