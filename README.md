@@ -42,8 +42,8 @@ optimization/
 
 ```mermaid
 flowchart TD
-    A[Input Data] --> B[Preprocessing (utils.py/.m)]
-    B --> C[Optimization Algorithm (optimizer.py/.m)]
+    A[Input Data] --> B[Preprocessing (utils.py)]
+    B --> C[Optimization Algorithm (optimizer.py)]
     C --> D[Results Output]
 ```
 
